@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Analytics | BA + DA Integrated Curriculum</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f7fc;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      padding: 2rem 1.5rem;
+      color: #1a2c3e;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .mentor-header {
+      text-align: right;
+      font-size: 1rem;
+      font-weight: 500;
+      background: transparent;
+      padding: 0.2rem 1rem 0.5rem 1rem;
+      color: #2c6979;
+      border-bottom: 1px dashed #cbdbe2;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    .mentor-header span {
+      background: #eef2f0;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #1a4b6e;
+    }
+
+    .domain-header {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      padding: 1rem 1rem 0.5rem 1rem;
+      margin: 1.2rem 0 1rem 0;
+      border-radius: 28px 28px 16px 16px;
+    }
+
+    .ba-header {
+      background: linear-gradient(135deg, #0b3954, #087e8b);
+      color: white;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    }
+
+    .da-header {
+      background: linear-gradient(135deg, #1f6e43, #6f9e3f);
+      color: white;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    }
+
+    .integration-note {
+      background: #eef3fa;
+      border-left: 6px solid #f4b942;
+      padding: 1rem 1.8rem;
+      border-radius: 24px;
+      margin: 0.5rem 0 1.8rem 0;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #1f556e;
+    }
+
+    .phase-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    .phase-table th {
+      background: #eef2f7;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 1rem 1.2rem;
+      text-align: left;
+      border-bottom: 2px solid #cfdfed;
+      color: #1a4b6e;
+    }
+
+    .phase-table td {
+      padding: 1rem 1.2rem;
+      vertical-align: top;
+      border-bottom: 1px solid #e6edf4;
+      background: #ffffff;
+    }
+
+    .phase-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .phase-name {
+      width: 22%;
+      background: #fafcff;
+      font-weight: 700;
+      color: #0b5e7e;
+      font-size: 0.95rem;
+      letter-spacing: -0.2px;
+      border-right: 1px solid #e2eaf1;
+    }
+
+    .goal-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #3c7a9c;
+      background: #e7f0f9;
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-top: 6px;
+    }
+
+    .techniques-list, .tools-list, .artifacts-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .badge-tech {
+      background: #eef2fa;
+      color: #1f5e7e;
+      padding: 0.25rem 0.85rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .badge-tool {
+      background: #e9f0f5;
+      color: #2c6b2f;
+      padding: 0.25rem 0.85rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-family: monospace;
+    }
+
+    .badge-artifact {
+      background: #fef3e2;
+      color: #b45f1b;
+      padding: 0.25rem 0.85rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .badge-da-integration {
+      background: #d9f0e6;
+      color: #1a6741;
+      padding: 0.25rem 0.85rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-left: 2px solid #2c9c6e;
+    }
+
+    .subnote {
+      font-size: 0.7rem;
+      color: #5f7f9e;
+      margin-top: 8px;
+      font-weight: normal;
+    }
+
+    hr {
+      margin: 0.5rem 0;
+      border: none;
+      height: 1px;
+      background: #dce5ec;
+    }
+
+    .info-footnote {
+      margin-top: 2rem;
+      background: #ffffffd9;
+      border-radius: 28px;
+      padding: 1.2rem 2rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+      border: 1px solid #dee9f2;
+      font-size: 0.9rem;
+    }
+
+    .mental-model {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: space-between;
+      background: #fef9e6;
+      border-left: 8px solid #f4b942;
+      padding: 1rem 1.5rem;
+      border-radius: 28px;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .model-item {
+      flex: 1;
+      font-weight: 600;
+    }
+
+    .model-item span {
+      font-weight: 800;
+      color: #1f6392;
+    }
+
+    @media (max-width: 950px) {
+      .phase-table th, .phase-table td {
+        padding: 0.8rem;
+      }
+      .phase-name {
+        width: 28%;
+      }
+    }
+    @media (max-width: 700px) {
+      .phase-table, .phase-table tbody, .phase-table tr, .phase-table td {
+        display: block;
+        width: 100%;
+      }
+      .phase-table th {
+        display: none;
+      }
+      .phase-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #dce7f0;
+        border-radius: 20px;
+      }
+      .phase-name {
+        width: 100%;
+        background: #f2f6fc;
+        font-weight: 800;
+        border-bottom: 1px solid #dce3ec;
+      }
+    }
+
+    .clean-separator {
+      height: 3px;
+      background: linear-gradient(90deg, #bfd7e8, transparent);
+      margin: 0.5rem 0 1.2rem;
+    }
+
+    .da-highlight {
+      background: #f3faf5;
+      border-left: 3px solid #5fad41;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Mentor line (top right) no logos -->
+  <div class="mentor-header">
+    <span>🧑‍🏫 Mentor: Usman Raja</span>
+  </div>
+
+  <!-- Curriculum justification -->
+  <div class="integration-note">
+    🔄 <strong>Integrated BA + DA Curriculum: Why BA students master Data Analytics tools & techniques</strong><br>
+    Today’s Business Analysts use data analytics to validate requirements, quantify gaps, and drive evidence-based recommendations. 
+    In the tables below, each BA phase now includes <strong>“DA Integration (Tools & Techniques)”</strong> — showing exactly how SQL, Python, Power BI, 
+    predictive models and descriptive analytics empower traditional BA tasks. Learn both domains seamlessly.
+  </div>
+
+  <!-- Mental model summary -->
+  <div class="mental-model">
+    <div class="model-item">📌 <span>BUSINESS ANALYST</span> → Problem framing, requirements, process improvement</div>
+    <div class="model-item">📊 <span>DATA ANALYST</span> → Data wrangling, statistical analysis, dashboards & insights</div>
+    <div class="model-item">⚙️ <span>BA + DA SYNERGY</span> → Each BA phase enhanced by specific DA methods (SQL, Python, Power BI, predictive analytics)</div>
+    <div class="model-item">🎯 Technique=action &nbsp;|&nbsp; 🛠️ Tool=software &nbsp;|&nbsp; 📄 Artifact=output</div>
+  </div>
+
+  <!-- ========== BUSINESS ANALYSIS LIFECYCLE with DATA ANALYTICS INTEGRATION embedded ========= -->
+  <div class="domain-header ba-header">📌 BUSINESS ANALYSIS LIFECYCLE (with DA tools & techniques embedded)</div>
+  
+  <table class="phase-table">
+    <thead>
+      <tr>
+        <th>BA Phase & Goal</th>
+        <th>Core BA Techniques & Artifacts</th>
+        <th>📊 DATA ANALYTICS INTEGRATION <br> (Tools & Techniques for BA)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="phase-name">🔹 PHASE 1: Planning & Strategy<br><span class="goal-tag">Define scope & value metrics</span></td>
+        <td>
+          <div class="techniques-list"><span class="badge-tech">Business Analysis Approach</span><span class="badge-tech">Stakeholder Analysis</span><span class="badge-tech">Risk Assessment</span><span class="badge-tech">Estimation</span></div>
+          <div class="techniques-list"><span class="badge-artifact">BA Plan</span><span class="badge-artifact">Risk Register</span></div>
+        </td>
+        <td class="da-highlight">
+          <div class="techniques-list">
+            <span class="badge-da-integration">📈 Descriptive Analytics: Historical KPIs to define baseline</span>
+            <span class="badge-da-integration">📊 Tool: Power BI / Tableau (executive dashboards for scope validation)</span>
+            <span class="badge-da-integration">🐍 Python (pandas) – quick data profiling to assess data feasibility</span>
+            <span class="badge-tool">SQL – query existing data sources to estimate project complexity</span>
+          </div>
+          <div class="subnote">✨ BA outcome: Data-backed business case & realistic planning</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="phase-name">🔹 PHASE 2: Stakeholder Engagement<br><span class="goal-tag">Understand people & pain points</span></td>
+        <td>
+          <div class="techniques-list"><span class="badge-tech">Stakeholder Mapping</span><span class="badge-tech">RACI Matrix</span><span class="badge-tech">Interviews & Workshops</span><span class="badge-tech">Surveys</span></div>
+          <div class="techniques-list"><span class="badge-artifact">RACI Chart</span><span class="badge-artifact">Stakeholder Map</span></div>
+        </td>
+        <td class="da-highlight">
+          <div class="techniques-list">
+            <span class="badge-da-integration">📋 Survey data analysis (Google Forms + Python/Excel pivot)</span>
+            <span class="badge-da-integration">🔍 Sentiment analysis on stakeholder feedback (basic NLP)</span>
+            <span class="badge-da-integration">📊 Tool: Power BI / Tableau (interactive stakeholder heatmaps)</span>
+            <span class="badge-tool">Miro + SQL (correlating stakeholder input with system logs)</span>
+          </div>
+          <div class="subnote">✨ BA outcome: Data-informed stakeholder priorities & pain point quantification</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="phase-name">🔹 PHASE 3: Requirements Elicitation<br><span class="goal-tag">Gather & prioritize needs</span></td>
+        <td>
+          <div class="techniques-list"><span class="badge-tech">User Stories</span><span class="badge-tech">Use Cases</span><span class="badge-tech">Prototyping</span><span class="badge-tech">Business Rules Analysis</span></div>
+          <div class="techniques-list"><span class="badge-artifact">User Story Map</span><span class="badge-artifact">Use Case Spec</span></div>
+        </td>
+        <td class="da-highlight">
+          <div class="techniques-list">
+            <span class="badge-da-integration">📊 Descriptive analytics on current system usage (SQL queries)</span>
+            <span class="badge-da-integration">📈 Funnel analysis to identify drop-offs → requirements for improvements</span>
+            <span class="badge-da-integration">🐍 Python (matplotlib/seaborn) for visualizing usage patterns</span>
+            <span class="badge-tool">Google Analytics / Mixpanel (behavioral insights)</span>
+          </div>
+          <div class="subnote">✨ BA outcome: Data-driven user stories & prioritized features based on real usage</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="phase-name">🔹 PHASE 4: Documentation & Analysis<br><span class="goal-tag">Structure requirements & data dictionary</span></td>
+        <td>
+          <div class="techniques-list"><span class="badge-tech">BRD / FRD structuring</span><span class="badge-tech">Acceptance Criteria</span><span class="badge-tech">Data Dictionary</span><span class="badge-tech">RTM</span></div>
+          <div class="techniques-list"><span class="badge-artifact">📄 BRD, FRD, SRS</span><span class="badge-artifact">📄 Data Dictionary</span><span class="badge-artifact">RTM</span></div>
+        </td>
+        <td class="da-highlight">
+          <div class="techniques-list">
+            <span class="badge-da-integration">🔢 Data profiling (SQL + Python) to build accurate Data Dictionary</span>
+            <span class="badge-da-integration">📊 Metadata analysis with Power BI / Alteryx</span>
+            <span class="badge-da-integration">📈 Traceability matrix enhanced by lineage from ETL tools (dbt)</span>
+            <span class="badge-tool">SQL / Python (pandas-profiling)</span>
+          </div>
+          <div class="subnote">✨ BA outcome: Precise data definitions & quality rules embedded in requirements</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="phase-name">🔹 PHASE 5: Process Modeling & Gap Analysis<br><span class="goal-tag">Improve workflows & find gaps</span></td>
+        <td>
+          <div class="techniques-list"><span class="badge-tech">BPMN</span><span class="badge-tech">SIPOC</span><span class="badge-tech">Swimlane Diagrams</span><span class="badge-tech">Gap Analysis</span><span class="badge-tech">Root Cause (5 Whys, Fishbone)</span></div>
+          <div class="techniques-list"><span class="badge-artifact">As-Is/To-Be Models</span><span class="badge-artifact">Gap Report</span></div>
+        </td>
+        <td class="da-highlight">
+          <div class="techniques-list">
+            <span class="badge-da-integration">📊 Process mining (Celonis / Power BI + event logs)</span>
+            <span class="badge-da-integration">🔍 Diagnostic analytics: root cause using SQL & cohort analysis</span>
+            <span class="badge-da-integration">📈 Time series analysis to detect process bottlenecks (Python)</span>
+            <span class="badge-tool">Python (statistics), SQL (window functions), Tableau</span>
+          </div>
+          <div class="subnote">✨ BA outcome: Quantified gap analysis with statistical evidence of inefficiencies</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="phase-name">🔹 PHASE 6: Validation & Testing<br><span class="goal-tag">Ensure correctness & business value</span></td>
+        <td>
+          <div class="techniques-list"><span class="badge-tech">Requirement Reviews</span><span class="badge-tech">UAT (User Acceptance Testing)</span><span class="badge-tech">Traceability Check</span></div>
+          <div class="techniques-list"><span class="badge-artifact">UAT Test Cases</span><span class="badge-artifact">Validation Sign-off</span></div>
+        </td>
+        <td class="da-highlight">
+          <div class="techniques-list">
+            <span class="badge-da-integration">📊 A/B testing framework to validate requirement impact</span>
+            <span class="badge-da-integration">📈 Hypothesis testing (t-test / chi-square) to compare pre/post</span>
+            <span class="badge-da-integration">🛠️ Power BI dashboards for UAT metrics & defect analysis</span>
+            <span class="badge-tool">Python (scipy), Excel (Analysis Toolpak)</span>
+          </div>
+          <div class="subnote">✨ BA outcome: Statistical sign-off & measurable acceptance criteria</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="phase-name">🔹 PHASE 7: Delivery & Value Tracking<br><span class="goal-tag">Measure solution performance</span></td>
+        <td>
+          <div class="techniques-list"><span class="badge-tech">Agile/Waterfall metrics</span><span class="badge-tech">KPIs definition</span><span class="badge-tech">Benefit realization</span></div>
+          <div class="techniques-list"><span class="badge-artifact">Sprint Backlog</span><span class="badge-artifact">Value Dashboard</span></div>
+        </td>
+        <td class="da-highlight">
+          <div class="techniques-list">
+            <span class="badge-da-integration">📈 Predictive analytics: forecast future business value (regression models)</span>
+            <span class="badge-da-integration">📊 Prescriptive analytics: optimization recommendations for next phases</span>
+            <span class="badge-da-integration">🛠️ Power BI / Tableau real-time value tracking dashboards</span>
+            <span class="badge-tool">Python (scikit-learn), SQL, Power BI</span>
+          </div>
+          <div class="subnote">✨ BA outcome: Data-driven value realization & continuous improvement</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ========== DATA ANALYTICS LIFECYCLE (standalone but aligned) ========= -->
+  <div class="domain-header da-header">📈 DATA ANALYTICS LIFECYCLE — Core Skills for BA Students</div>
+  
+  <table class="phase-table">
+    <thead>
+      <tr>
+        <th>DA Phase & Focus</th>
+        <th>Techniques / Methods (What you do)</th>
+        <th>Tools & Sources</th>
+        <th>BA Application (How BA uses this)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="phase-name">🔹 PHASE 1: Data Collection & Storage<br><span class="goal-tag">Ingest & organize raw data</span></td>
+        <td><div class="techniques-list"><span class="badge-tech">Source identification</span><span class="badge-tech">Data ingestion patterns</span><span class="badge-tech">Database selection</span></div></td>
+        <td><div class="tools-list"><span class="badge-tool">MySQL/PostgreSQL</span><span class="badge-tool">Snowflake</span><span class="badge-tool">Salesforce</span><span class="badge-tool">SAP</span></div></td>
+        <td style="background:#fef8e7;"><span class="badge-tech" style="background:#f3e0be;">BA defines data requirements & quality rules; uses SQL for exploratory analysis</span></td>
+      </tr>
+      <tr>
+        <td class="phase-name">🔹 PHASE 2: Data Processing<br><span class="goal-tag">Clean & transform for analysis</span></td>
+        <td><div class="techniques-list"><span class="badge-tech">Data Cleaning</span><span class="badge-tech">ETL/ELT</span><span class="badge-tech">Data Profiling</span></div></td>
+        <td><div class="tools-list"><span class="badge-tool">Python (Pandas)</span><span class="badge-tool">SQL</span><span class="badge-tool">Excel Power Query</span><span class="badge-tool">dbt</span></div></td>
+        <td style="background:#fef8e7;"><span class="badge-tech" style="background:#f3e0be;">BA ensures data lineage & cleansing rules match business glossary</span></td>
+      </tr>
+      <tr>
+        <td class="phase-name">🔹 PHASE 3: Core Analytics<br><span class="goal-tag">Extract insights & patterns</span></td>
+        <td>
+          <div class="techniques-list" style="flex-direction: column; align-items: flex-start; gap: 6px;">
+            <div><span class="badge-tech">📊 Descriptive</span> <span class="badge-tech">🔍 Diagnostic</span> <span class="badge-tech">🔮 Predictive</span> <span class="badge-tech">🎯 Prescriptive</span></div>
+            <div><span class="badge-tech">Cohort Analysis</span><span class="badge-tech">RFM</span><span class="badge-tech">A/B Testing</span><span class="badge-tech">Hypothesis Testing</span></div>
+          </div>
+        </td>
+        <td><div class="tools-list"><span class="badge-tool">Python/R</span><span class="badge-tool">Power BI</span><span class="badge-tool">Tableau</span><span class="badge-tool">SQL</span></div></td>
+        <td style="background:#fef8e7;"><span class="badge-tech" style="background:#f3e0be;">BA uses descriptive/diagnostic to validate requirements; predictive for business cases</span></td>
+      </tr>
+      <tr>
+        <td class="phase-name">🔹 PHASE 4: Visualization & Communication<br><span class="goal-tag">Share insights effectively</span></td>
+        <td><div class="techniques-list"><span class="badge-tech">Dashboard Design</span><span class="badge-tech">Data Storytelling</span><span class="badge-tech">KPI Reporting</span></div></td>
+        <td><div class="tools-list"><span class="badge-tool">Power BI</span><span class="badge-tool">Tableau</span><span class="badge-tool">Looker Studio</span></div></td>
+        <td style="background:#fef8e7;"><span class="badge-tech" style="background:#f3e0be;">BA presents data-driven requirements & ROI to stakeholders via dashboards</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Practical bridge: BA student journey -->
+  <div class="integration-note" style="background: #e6f2ed; border-left-color: #2c6b2f;">
+    💡 <strong>BA Student Journey: Mastering DA Tools step by step</strong><br>
+    • <strong>Phase 1-2 (Planning & Stakeholders):</strong> Learn Power BI & SQL to analyze existing KPIs and stakeholder feedback.<br>
+    • <strong>Phase 3-4 (Elicitation & Documentation):</strong> Use Python (pandas) and SQL profiling to build data dictionaries and usage-based user stories.<br>
+    • <strong>Phase 5-6 (Gap Analysis & Validation):</strong> Apply diagnostic analytics & A/B testing frameworks to quantify process gaps and validate solutions.<br>
+    • <strong>Phase 7 (Delivery):</strong> Deploy predictive models to forecast business value and track benefits with dashboards.<br>
+    ➡️ <strong>Outcome:</strong> A Business Analyst who speaks data fluently — from requirements to analytics-powered recommendations.
+  </div>
+
+  <!-- What was fixed + layered architecture -->
+  <div class="info-footnote">
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: space-between;">
+      <div style="flex:1;">
+        <h3 style="color:#155f7c; margin-bottom: 0.5rem;">✅ STRUCTURAL ENHANCEMENTS</h3>
+        <ul style="padding-left: 1.2rem; color: #2d4b6e;">
+          <li>✔️ Removed all logos — clean professional design.</li>
+          <li>✔️ "Mentor: Usman Raja" placed on top right.</li>
+          <li>✔️ <strong>Each BA phase now has dedicated DA Integration column</strong> with tools (SQL, Python, Power BI) and techniques.</li>
+          <li>✔️ BA students explicitly learn how to apply descriptive, diagnostic, predictive analytics within BA tasks.</li>
+          <li>✔️ No concept mixing: Techniques ≠ Artifacts ≠ Tools; clear separation in BA table.</li>
+        </ul>
+      </div>
+      <div style="flex:1;">
+        <h3 style="color:#2c6b2f; margin-bottom: 0.5rem;">🧩 LAYERED CURRICULUM ARCHITECTURE</h3>
+        <div><strong>L1 → Domains:</strong> Business Analysis + Data Analytics (integrated)</div>
+        <div><strong>L2 → BA Phases:</strong> each enhanced with DA tooling (SQL, Python, Power BI, statistics)</div>
+        <div><strong>L3 → Techniques:</strong> BPMN, Cohort, Regression, RACI, Root Cause, A/B testing</div>
+        <div><strong>L4 → Tools:</strong> Jira, Power BI, Python, Tableau, Miro, SQL, dbt</div>
+        <div><strong>📄 Artifacts:</strong> BRD, Data Dictionary, Dashboards, Gap Analysis Report, UAT Metrics</div>
+      </div>
+    </div>
+    <div class="clean-separator"></div>
+    <div style="font-size: 0.85rem; text-align: center; color: #2c6979;">
+      🎯 <strong>Final Vision:</strong> A Business Analyst equipped with modern data analytics toolkit — bridging business needs and data evidence.
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div style="display: flex; gap: 1rem; justify-content: flex-start; margin-top: 1rem; flex-wrap: wrap; background: #ffffffcc; border-radius: 60px; padding: 0.5rem 1.2rem; width: fit-content;">
+    <span style="background:#eef2fa; padding:0.2rem 1rem; border-radius:40px;">⚙️ BA Technique</span>
+    <span style="background:#e9f0f5; padding:0.2rem 1rem; border-radius:40px;">🛠️ Tool</span>
+    <span style="background:#fef3e2; padding:0.2rem 1rem; border-radius:40px;">📄 Artifact</span>
+    <span style="background:#d9f0e6; padding:0.2rem 1rem; border-radius:40px;">📊 DA Integration (for BA)</span>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center; font-size: 0.85rem; border-top: 1px solid #cbdde9; padding-top: 1.5rem;">
+    🔁 <strong>BA + DA Core Mental Model:</strong> Define the problem → Analyze the data → Validate with evidence → Deliver measurable value.
+  </div>
+</div>
+</body>
+</html>
